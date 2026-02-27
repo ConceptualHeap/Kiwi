@@ -1,0 +1,12 @@
+# Directories
+.vs/
+.cache/
+bin/
+bin-int/
+
+# Files
+Makefile
+Kiwi/Makefile
+Sandbox/Makefile
+compile_commands.json
+*.user
