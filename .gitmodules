@@ -1,0 +1,3 @@
+[submodule "Kiwi/external/spdlog"]
+	path = Kiwi/external/spdlog
+	url = https://github.com/gabime/spdlog.git

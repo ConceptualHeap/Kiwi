@@ -20,7 +20,12 @@ project "Kiwi"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+    }
+
+    includedirs
+    {
+        "Kiwi/external/spdlog/include"
     }
 
     filter "system:windows"
@@ -49,16 +54,17 @@ project "Sandbox"
     language "C++"
 
     targetdir ("bin/" .. outputdir)
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
     }
 
     includedirs
     {
+        "Kiwi/external/spdlog/include",
         "Kiwi/src"
     }
 

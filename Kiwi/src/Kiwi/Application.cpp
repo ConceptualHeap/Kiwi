@@ -2,7 +2,7 @@
 
 namespace Kiwi {
 
-    KIWI_API Application::Application() {}
+    Application::Application() {}
 
     Application::~Application() {}
 
