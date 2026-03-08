@@ -2,8 +2,12 @@
 
 class Sandbox : public Kiwi::Application {
 public:
-    Sandbox() {}
-    ~Sandbox() {}
+    Sandbox() {
+        KW_INFO("Hellew :3");
+    }
+    ~Sandbox() {
+        KW_INFO("Bai bai :3");
+    }
 private:
 };
 
