@@ -1,14 +1,13 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
 
 namespace Kiwi {
 
     class KIWI_API Application {
         public:
         Application();
-        virtual ~Application();
+        ~Application();
 
         void run();
         private:
