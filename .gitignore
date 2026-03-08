@@ -4,6 +4,9 @@
 bin/
 bin-int/
 
+Kiwi/external/bin
+Kiwi/external/bin-int
+
 # Files
 Makefile
 Kiwi/Makefile
