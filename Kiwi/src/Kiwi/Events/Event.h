@@ -4,7 +4,7 @@
 #include "Kiwi/Core.h"
 
 namespace Kiwi {
-    enum class EventType {
+    enum class EventType : int {
         None = 0,
 
         WindowClose,
@@ -62,7 +62,7 @@ namespace Kiwi {
         EventDispatcher(Event& event) : m_Event(event) {}
 
         template<typename T>
-        bool Dispatch(EventFn<T> func) {
+        bool dispatch(EventFn<T> func) {
             if (m_Event.getEventType() == T::GetStaticType()) {
                 m_Event.m_Handled = func(*(T*)&m_Event);
                 return true;

@@ -20,6 +20,23 @@ namespace Kiwi {
         float m_MouseY;
     };
 
+    class KIWI_API MouseScrolledEvent : public Event {
+    public:
+        MouseScrolledEvent(float x, float y) : m_OffsetX(x), m_OffsetY(y) {}
+        inline float getX() const { return m_OffsetX; }
+        inline float getY() const { return m_OffsetY; }
+        std::string toString() const override {
+            std::stringstream ss;
+            ss << "MouseScrolledEvent: " << m_OffsetX << ", " << m_OffsetY;
+            return ss.str();
+        }
+        EVENT_CLASS_TYPE(MouseScrolled);
+        EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse);
+    private:
+        float m_OffsetX;
+        float m_OffsetY;
+    };
+
     class KIWI_API MouseButtonEvent : public Event {
     public:
         inline int getMouseButton() const { return m_Button; }

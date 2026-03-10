@@ -40,6 +40,8 @@ project "Kiwi"
     pchheader "kwpch.h"
     pchsource "Kiwi/src/kwpch.cpp"
 
+    multiprocessorcompile "on"
+
     files
     {
         "%{prj.name}/src/**.h",
@@ -69,7 +71,7 @@ project "Kiwi"
         links { "vulkan-1", "SDL3" }
 
     filter "configurations:Debug"
-        defines "KW_DEBUG"
+        defines { "KW_DEBUG", "KW_ENABLE_ASSERTS" }
         runtime "Debug"
         symbols "on"
 
@@ -94,6 +96,8 @@ project "Sandbox"
 
     targetdir ("bin/" .. OutputDir .. "/%{prj.name}")
     objdir("bin-int/" .. OutputDir .. "/%{prj.name}")
+
+    multiprocessorcompile "on"
 
     files
     {
@@ -123,7 +127,7 @@ project "Sandbox"
         links { "vulkan-1", "SDL3" }
 
     filter "configurations:Debug"
-        defines "KW_DEBUG"
+        defines { "KW_DEBUG", "KW_ENABLE_ASSERTS" }
         runtime "Debug"
         symbols "on"
 
