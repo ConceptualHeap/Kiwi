@@ -15,7 +15,7 @@ namespace Kiwi {
         s_CoreLogger->set_level(spdlog::level::trace);
 
         s_ClientLogger = spdlog::stdout_color_mt("APP");
-        s_CoreLogger->set_level(spdlog::level::trace);
+        s_ClientLogger->set_level(spdlog::level::trace);
     }
     void Logger::Log(LogType type, LogLevel level, const std::string& message) {
         std::shared_ptr<spdlog::logger>& logger = level == LogLevel::Core ? s_CoreLogger : s_ClientLogger;

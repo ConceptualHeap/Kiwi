@@ -18,11 +18,20 @@ namespace Kiwi {
         EventDispatcher dispatcher(e);
         dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FN(onWindowClose));
 
-        KW_CORE_TRACE("{}", e.toString());
+        for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
+            (*--it)->onEvent(e);
+            if (e.isHandled()) {
+                break;
+            }
+        }
     }
 
     void Application::run() {
         while (m_Running) {
+            for (Layer* layer : m_LayerStack) {
+                layer->onUpdate();
+            }
+
             m_Window->onUpdate();
         }
     }

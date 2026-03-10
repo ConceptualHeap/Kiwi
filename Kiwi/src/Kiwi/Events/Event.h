@@ -50,6 +50,7 @@ namespace Kiwi {
         virtual std::string toString() const { return getName(); }
 
         inline bool isInCategory(EventCategory category) { return getCategoryFlags() & category; }
+        inline bool isHandled() const { return m_Handled; }
 
     protected:
         bool m_Handled = false;
