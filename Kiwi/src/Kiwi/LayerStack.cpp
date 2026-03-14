@@ -14,9 +14,11 @@ namespace Kiwi {
 
     void LayerStack::pushLayer(Layer* layer) {
         m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+        layer->onAttach();
     }
     void LayerStack::pushOverlay(Layer* layer) {
         m_Layers.emplace_back(layer);
+        layer->onAttach();
     }
 
     void LayerStack::popLayer(Layer* layer) {

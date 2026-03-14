@@ -1,8 +1,11 @@
 #include <kwpch.h>
+
+#ifdef KW_PLATFORM_WINDOWS
+
 #include "WindowsWindow.h"
-#include "SDL_events.h"
-#include "SDL_init.h"
-#include "SDL_video.h"
+#include "SDL3/SDL_events.h"
+#include "SDL3/SDL_init.h"
+#include "SDL3/SDL_video.h"
 #include "Kiwi/Log.h"
 
 #include "Kiwi/Events/ApplicationEvent.h"
@@ -112,8 +115,9 @@ namespace Kiwi {
     }
 
     void WindowsWindow::onUpdate() {
-        SDL_Event event;
-        SDL_PollEvent(&event);
+        SDL_PollEvent(&m_Event);
+
+        auto& event = m_Event;
 
         if (event.window.type == SDL_EVENT_QUIT) {
             m_CloseCallbackFn();
@@ -146,3 +150,5 @@ namespace Kiwi {
         }
     }
 }
+
+#endif

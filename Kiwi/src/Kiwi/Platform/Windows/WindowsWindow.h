@@ -1,6 +1,8 @@
 #pragma once
 
-#include "SDL_video.h"
+#ifdef KW_PLATFORM_WINDOWS
+
+#include "SDl3/SDL.h"
 #include <Kiwi/Window.h>
 
 namespace Kiwi {
@@ -13,8 +15,11 @@ namespace Kiwi {
 
         inline uint32_t getWidth() const override { return m_Width; }
         inline uint32_t getHeight() const override { return m_Height; }
+        inline void* getNativeWindow() const override { return m_Window; }
 
         inline void setEventCallback(const EventCallbackFn& callback) override { m_EventCallback = callback; }
+
+        inline const SDL_Event& getEvent() const { return m_Event; }
 
     private:
         virtual void init(const WindowProps& props);
@@ -29,6 +34,7 @@ namespace Kiwi {
 
     private:
         SDL_Window* m_Window;
+        SDL_Event m_Event;
 
         std::string m_Title;
         uint32_t m_Width;
@@ -44,3 +50,5 @@ namespace Kiwi {
         std::function<void(float, float)> m_CursorPosCallbackFn;
     };
 }
+
+#endif

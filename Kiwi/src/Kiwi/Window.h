@@ -24,6 +24,7 @@ namespace Kiwi {
 
         virtual uint32_t getWidth() const = 0;
         virtual uint32_t getHeight() const = 0;
+        virtual void* getNativeWindow() const = 0;
 
         virtual void setEventCallback(const EventCallbackFn& callback) = 0;
 

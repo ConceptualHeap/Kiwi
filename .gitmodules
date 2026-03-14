@@ -1,3 +1,7 @@
 [submodule "Kiwi/external/spdlog"]
 	path = Kiwi/external/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Kiwi/external/imgui"]
+	path = Kiwi/external/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking

@@ -14,12 +14,13 @@ end
 
 IncludeDirs           = {}
 IncludeDirs["spdlog"] = "Kiwi/external/spdlog/include"
-IncludeDirs["Vulkan"] = "%{VULKAN_SDK}/Include"
-IncludeDirs["SDL3"]   = "%{VULKAN_SDK}/Include/SDL3"
+IncludeDirs["vulkan"] = "%{VULKAN_SDK}/Include"
+IncludeDirs["sdl"]   = "Kiwi/external/sdl/include"
+IncludeDirs["imgui"]   = "Kiwi/external/imgui"
 
 LibDirs               = {}
 LibDirs["Vulkan"]     = "%{VULKAN_SDK}/Lib"
-LibDirs["SDL3"]       = "%{VULKAN_SDK}/Lib"
+LibDirs["sdl"]       = "Kiwi/external/sdl/lib"
 
 OutputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -52,23 +53,27 @@ project "Kiwi"
     {
         "%{prj.name}/src",
         "%{IncludeDirs.spdlog}",
-        "%{IncludeDirs.Vulkan}",
-        "%{IncludeDirs.SDL3}",
+        "%{IncludeDirs.vulkan}",
+        "%{IncludeDirs.sdl}",
+        "%{IncludeDirs.imgui}",
     }
 
     libdirs {
         "%{LibDirs.Vulkan}",
-        "%{LibDirs.SDL3}",
+        "%{LibDirs.sdl}",
     }
 
     links {
         "spdlog",
+        "imgui",
+        "vulkan-1",
+        "SDL3"
     }
 
     filter "system:windows"
         systemversion "latest"
         defines { "KW_PLATFORM_WINDOWS", "KW_BUILD_DLL" }
-        links { "vulkan-1", "SDL3" }
+        libdirs { "%{LibDirs.Vulkan}", "%{LibDirs.sdl}" }
 
     filter "configurations:Debug"
         defines { "KW_DEBUG", "KW_ENABLE_ASSERTS" }
@@ -119,6 +124,7 @@ project "Sandbox"
     links {
         "Kiwi",
         "spdlog",
+        "imgui",
     }
 
     filter "system:windows"
